@@ -20,6 +20,7 @@ class Downloader:
 
         self.download_path = os.path.expanduser("~/Downloads")
         self.format_var = tk.StringVar(value="mp3")
+        self.quality_var = tk.StringVar(value="best")
 
         self.build_ui()
 
@@ -96,6 +97,32 @@ class Downloader:
             activeforeground="white"
         )
         mp4_btn.pack(side="left", padx=10)
+
+        # Quality Selection
+        quality_frame = tk.Frame(self.root, bg="#1a1a2e")
+        quality_frame.pack(padx=30, fill="x", pady=5)
+
+        tk.Label(
+            quality_frame,
+            text="Quality (MP4 only):",
+            font=("Arial", 11),
+            bg="#1a1a2e",
+            fg="white"
+        ).pack(side="left", padx=(0, 10))
+
+        for q in ["best", "1080p", "720p", "480p", "360p"]:
+            tk.Radiobutton(
+                quality_frame,
+                text=q,
+                variable=self.quality_var,
+                value=q,
+                font=("Arial", 10),
+                bg="#1a1a2e",
+                fg="white",
+                selectcolor="#16213e",
+                activebackground="#1a1a2e",
+                activeforeground="white"
+            ).pack(side="left", padx=5)
 
         # Save Location
         path_frame = tk.Frame(self.root, bg="#1a1a2e")
@@ -202,8 +229,15 @@ class Downloader:
                 }],
             }
         else:
+            quality = self.quality_var.get()
+            if quality == "best":
+                fmt = "bestvideo+bestaudio/best"
+            else:
+                height = quality.replace("p", "")
+                fmt = f"bestvideo[height<={height}]+bestaudio/best"
+            
             options = {
-                "format": "bestvideo+bestaudio/best",
+                "format": fmt,
                 "outtmpl": f"{self.download_path}/%(title)s.%(ext)s",
                 "merge_output_format": "mp4",
             }
