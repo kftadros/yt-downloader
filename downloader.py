@@ -14,8 +14,8 @@ class Downloader:
     def __init__(self, root):
         self.root = root
         self.root.title("YouTube Downloader")
-        self.root.geometry("600x400")
-        self.root.resizable(False, False)
+        self.root.geometry("600x550")
+        self.root.resizable(True, True)
         self.root.configure(bg="#1a1a2e")
 
         self.download_path = os.path.expanduser("~/Downloads")
