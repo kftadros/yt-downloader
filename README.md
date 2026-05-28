@@ -1,31 +1,27 @@
-
-
-# YouTube Downloader
-
-A simple YouTube downloader built with Python and tkinter.
-
-## Features
-- Download YouTube videos as MP4
-- Download YouTube audio as MP3
-- Choose custom save location
-- Clean GUI, no ads, no bloat
-
-## Requirements
-- Python 3.x
-- yt-dlp
-- FFmpeg (for MP3 conversion)
-
 ## Installation
 ```bash
 pip install yt-dlp
 ```
 
-Download FFmpeg from https://ffmpeg.org/download.html and add to PATH.
+## Requirements
+- Python 3.x (make sure to check "Add Python to PATH" during install)
+- yt-dlp
+- FFmpeg
+
+### Installing FFmpeg (required for MP3)
+
+**Easy way:**
+```bash
+winget install ffmpeg
+```
+
+**Manual way:**
+1. Download from https://www.gyan.dev/ffmpeg/builds/
+2. Extract to `C:\ffmpeg`
+3. Add `C:\ffmpeg\bin` to your system PATH
+4. Restart terminal
 
 ## Usage
 ```bash
 python downloader.py
 ```
-
-## Note
-For personal use only. Respect YouTube's terms of service.
