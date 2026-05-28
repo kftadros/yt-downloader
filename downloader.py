@@ -221,7 +221,8 @@ class Downloader:
         if fmt == "mp3":
             options = {
                 "format": "bestaudio/best",
-                "outtmpl": f"{self.download_path}/%(title)s.%(ext)s",
+                "outtmpl": f"{self.download_path}/%(title)s_%(autonumber)s.%(ext)s",
+                "overwrites": True,
                 "postprocessors": [{
                     "key": "FFmpegExtractAudio",
                     "preferredcodec": "mp3",
@@ -238,8 +239,9 @@ class Downloader:
             
             options = {
                 "format": fmt,
-                "outtmpl": f"{self.download_path}/%(title)s.%(ext)s",
+                "outtmpl": f"{self.download_path}/%(title)s_%(autonumber)s.%(ext)s",
                 "merge_output_format": "mp4",
+                "overwrites": True,
             }
 
         try:
