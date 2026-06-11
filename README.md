@@ -46,3 +46,10 @@ python3 downloader.py
 ```bash
 python downloader.py
 ```
+
+## Troubleshooting
+
+### `ModuleNotFoundError: No module named '_tkinter'` (macOS)
+```bash
+brew install python-tk@3.14
+```
